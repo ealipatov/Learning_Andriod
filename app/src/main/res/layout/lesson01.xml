@@ -8,10 +8,14 @@
 
     <TextView
         android:id="@+id/print_text_01"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="Привет всем!" />
+        android:gravity="center"
+        android:text="Привет всем!"
+        android:textColor="#0AC7DF"
+        android:background="#3F51B5"
+        android:textSize="16pt" />
+
 
     <EditText
         android:id="@+id/input_name"
@@ -23,23 +27,27 @@
         android:id="@+id/button_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="Кнопка" />
+        android:layout_gravity="center"
+        android:text="Кнопка"
+        android:textColor="#2196F3" />
 
     <Switch
+        android:id="@+id/switch_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        android:layout_gravity="right"
+        android:text="Переключатель" />
 
     <CheckBox
+        android:id="@+id/check_box_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        android:text="Тут можно поставить точку." />
 
     <ToggleButton
+        android:id="@+id/toggle_button_01"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints" />
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
