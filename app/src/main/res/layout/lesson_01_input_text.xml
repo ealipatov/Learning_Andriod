@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#86AA5B"
+        android:gravity="center"
+        android:text="@string/personData"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/textPersonName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enterName"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enterPhone"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enterNumber"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enterPassword"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
+
+    <EditText
+        android:id="@+id/textEmailAdress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/enterEmail"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:importantForAutofill="no"
+        tools:ignore="TextFields" />
+
+    <Button
+        android:id="@+id/buttonOutputData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/outputInfo" />
+
+    <TextView
+        android:id="@+id/outputResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="16sp"
+        tools:text="Результат" />
+
+
+</LinearLayout>
