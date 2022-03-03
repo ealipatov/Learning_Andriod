@@ -10,10 +10,11 @@
         android:id="@+id/print_text_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#3F51B5"
+
         android:gravity="center"
         android:text="Привет всем!"
         android:textColor="#0AC7DF"
-        android:background="#3F51B5"
         android:textSize="16pt" />
 
 
@@ -21,13 +22,13 @@
         android:id="@+id/input_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="20dp"
         android:text="Введите свое имя" />
 
     <Button
         android:id="@+id/button_01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="Кнопка"
         android:textColor="#2196F3" />
 

@@ -13,10 +13,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_main);
-        //setContentView(R.layout.lesson01);
-        setContentView(R.layout.lesson01_input_text);
+        setContentView(R.layout.activity_main);
 
+        // "Находим" все наши данные.
         EditText textPersonName = findViewById(R.id.textPersonName);
         EditText phone = findViewById(R.id.phone);
         EditText number = findViewById(R.id.number);
@@ -26,20 +25,20 @@ public class MainActivity extends AppCompatActivity {
         Button buttonOutputData = findViewById(R.id.buttonOutputData);
 
         TextView result = findViewById(R.id.outputResult);
-
+        //Определяем действие при нажатии на кнопку.
         buttonOutputData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                //Присваиваем переменным значения из введенных полей.
                 String personName = textPersonName.getText().toString();
                 Integer phoneNumber = Integer.valueOf(phone.getText().toString());
                 Integer numberPerson = Integer.valueOf(number.getText().toString());
                 String passwordPerson = textPassword.getText().toString();
                 String emailPerson = textEmailAdress.getText().toString();
 
-                result.setText(personName + phoneNumber.toString());
-
-
+                //Выводим на экран введенное имя и телефон
+                result.setText(personName + " " + phoneNumber.toString());
 
             }
         });
