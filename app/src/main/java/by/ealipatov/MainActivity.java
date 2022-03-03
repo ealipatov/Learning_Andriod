@@ -31,9 +31,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //Присваиваем переменным значения из введенных полей.
+
                 String personName = textPersonName.getText().toString();
-                Integer phoneNumber = Integer.valueOf(phone.getText().toString());
-                Integer numberPerson = Integer.valueOf(number.getText().toString());
+                Integer phoneNumber = 0;
+                Integer numberPerson = 0;
+
+                try {
+                    if(!(phone.getText().length() == 0))
+                        phoneNumber = Integer.valueOf(phone.getText().toString());
+
+                    if(!(number.getText().length() == 0))
+                        numberPerson = Integer.valueOf(number.getText().toString());
+                }
+                catch (NumberFormatException e){
+                    e.printStackTrace();
+                }
+
                 String passwordPerson = textPassword.getText().toString();
                 String emailPerson = textEmailAdress.getText().toString();
 

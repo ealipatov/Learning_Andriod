@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="enterName">Введите свое имя</string>
+    <string name="enterPhone">Введите номер телефона</string>
+    <string name="enterNumber">Введите число</string>
+    <string name="enterPassword">Введите пароль</string>
+    <string name="enterEmail">Введите email</string>
+    <string name="outputInfo">Вывести информацию</string>
+    <string name="personData">Данные пользователя</string>
+    <string name="onMy">Включи меня</string>
+    <string name="checkMy">Тут можно поставить точку.</string>
+    <string name="myButton">Просто кнопка</string>
+    <string name="helloAll">Привет всем!</string>
 </resources>

@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".MainActivity">
 
     <include
         android:id="@+id/layout_01"
-        layout="@layout/lesson01"
-        android:layout_width="match_parent"
+        layout="@layout/lesson_01"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <include
         android:id="@+id/layout_02"
-        layout="@layout/lesson01_input_text"
-        android:layout_width="match_parent"
+        layout="@layout/lesson_01_input_text"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintLeft_toLeftOf="@id/layout_01"
+        app:layout_constraintTop_toBottomOf="@id/layout_01"
+        app:layout_constraintRight_toRightOf="@id/layout_01" />
+
+    <CalendarView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="@id/layout_02"
+        app:layout_constraintRight_toRightOf="@id/layout_02"
+        app:layout_constraintTop_toBottomOf="@id/layout_02"
+        android:background="#B6B4B4"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
