@@ -7,8 +7,44 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginTop="16dp">
+
+    <TextView
+        android:id="@+id/screen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#673AB7"
+        android:gravity="right"
+        android:text="@string/key_0"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="@id/key_perc"
+        app:layout_constraintRight_toRightOf="@id/key_clear"
+        app:layout_constraintTop_toTopOf="parent"
+
+        tools:ignore="RtlHardcoded">
+        <!--Почему студия просит добавить этот атрибут ? -->
+
+    </TextView>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/key_0"
+
+        android:src="@drawable/back_1"
+        app:layout_constraintBottom_toBottomOf="@id/screen"
+        app:layout_constraintLeft_toLeftOf="@id/screen"
+        app:layout_constraintRight_toRightOf="@id/screen"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
 
     <Button
         android:id="@+id/key_7"
@@ -30,7 +66,9 @@
 
         app:layout_constraintLeft_toRightOf="@id/key_7"
         app:layout_constraintRight_toLeftOf="@id/key_9"
-        app:layout_constraintTop_toBottomOf="@id/key_mult"></Button>
+        app:layout_constraintTop_toBottomOf="@id/key_mult">
+
+    </Button>
 
     <Button
         android:id="@+id/key_9"
@@ -40,7 +78,9 @@
 
         app:layout_constraintLeft_toRightOf="@id/key_8"
         app:layout_constraintRight_toLeftOf="@id/key_diff"
-        app:layout_constraintTop_toBottomOf="@id/key_div"></Button>
+        app:layout_constraintTop_toBottomOf="@id/key_div">
+
+    </Button>
 
     <Button
         android:id="@+id/key_4"
@@ -183,7 +223,7 @@
 
         app:layout_constraintLeft_toLeftOf="@id/key_9"
         app:layout_constraintRight_toRightOf="@id/key_9"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/screen">
 
     </Button>
 
@@ -195,7 +235,7 @@
 
         app:layout_constraintLeft_toLeftOf="@id/key_8"
         app:layout_constraintRight_toRightOf="@id/key_8"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/screen">
 
     </Button>
 
@@ -207,7 +247,7 @@
 
         app:layout_constraintLeft_toLeftOf="@id/key_7"
         app:layout_constraintRight_toRightOf="@id/key_7"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/screen">
 
     </Button>
 
@@ -219,7 +259,7 @@
 
         app:layout_constraintLeft_toLeftOf="@id/key_diff"
         app:layout_constraintRight_toRightOf="@id/key_diff"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/screen">
 
     </Button>
 
