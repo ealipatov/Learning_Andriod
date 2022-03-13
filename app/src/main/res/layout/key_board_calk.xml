@@ -9,17 +9,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="16dp">
+    android:layout_height="wrap_content">
+
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/key_0"
+
+        android:src="@drawable/back_1"
+        android:scaleType="center"
+        android:alpha="0.5"
+        app:layout_constraintBottom_toBottomOf="@id/screen"
+        app:layout_constraintLeft_toLeftOf="@id/screen"
+        app:layout_constraintRight_toRightOf="@id/screen"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ImageView>
 
     <TextView
         android:id="@+id/screen"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#673AB7"
+
         android:gravity="right"
         android:text="@string/key_0"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="40sp"
 
         app:layout_constraintHorizontal_weight="1"
@@ -31,20 +48,6 @@
         <!--Почему студия просит добавить этот атрибут ? -->
 
     </TextView>
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/key_0"
-
-        android:src="@drawable/back_1"
-        app:layout_constraintBottom_toBottomOf="@id/screen"
-        app:layout_constraintLeft_toLeftOf="@id/screen"
-        app:layout_constraintRight_toRightOf="@id/screen"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ImageView>
 
     <Button
         android:id="@+id/key_7"
