@@ -13,7 +13,7 @@
         app:cardCornerRadius="12dp"
         app:cardBackgroundColor="#0F112233">
 
-    <include layout="@layout/key_board_calk">
+    <include layout="@layout/key_board_calc">
     </include>
 
     </androidx.cardview.widget.CardView>
