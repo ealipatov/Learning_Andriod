@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView screen;
     StringBuilder buf;
-    Double a = 0.0, b = 0.0;
+    Double res = null;
+    String operator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +27,15 @@ public class MainActivity extends AppCompatActivity {
         buf = new StringBuilder();
 
 
-        screen.setText("0");
-        // обработка нажатия на числовую кнопку
+        // обработка нажатия на кнопки
         View.OnClickListener clickListener = new View.OnClickListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public void onClick(View view) {
 
                 switch (view.getId()) {
                     case R.id.key_0:
-                        buf.append("0");
+                        buf.append(0);
                         showResult(String.valueOf(buf));
                         logEvent("клавиша 0");
                         break;
@@ -93,77 +94,166 @@ public class MainActivity extends AppCompatActivity {
                         logEvent("клавиша 9");
                         break;
 
+                    case R.id.key_dot:
+
+                        if (!String.valueOf(buf).contains(".")) {
+                            buf.append(".");
+                        }
+
+                        showResult(String.valueOf(buf));
+                        logEvent("клавиша dot");
+                        break;
+
                     case R.id.key_clear:
-                        buf.deleteCharAt(buf.length()-1);
+                        if (buf.length() > 0)
+                            buf.deleteCharAt(buf.length() - 1);
+                        else res = null;
                         showResult(String.valueOf(buf));
                         logEvent("клавиша del");
                         break;
 
                     case R.id.key_sum:
-                        if(a == 0.0 && buf.length()>0) {
-                            a = Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                        } else {
-                            if(buf.length()>0)
-                            a += Double.valueOf(String.valueOf(buf));
-                            else
-                                a += a;
-
-                            buf.delete(0, buf.length());
-                            showResult(String.valueOf(a));
+                        operator = "+";
+                        if (res == null && buf.length() > 0)
+                            res = Double.valueOf(String.valueOf(buf));
+                        else if (res != null && buf.length() >0) {
+                            showResult(res + "+");
+                            res += Double.parseDouble(String.valueOf(buf));
                         }
+                        else if (res != null && buf.length() == 0)
+                            res += res;
+                        else res = 0.0;
+
+                        buf.delete(0, buf.length());
+                        showResult(String.valueOf(res));
+
                         logEvent("клавиша sum");
                         break;
 
                     case R.id.key_diff:
-                        if(a == 0.0) {
-                            a = Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                        } else {
-                            a -= Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                            showResult(String.valueOf(a));
-                        }
+                        operator = "-";
+                        if (res == null && buf.length() > 0)
+                            res = Double.valueOf(String.valueOf(buf));
+                        else if (res != null && buf.length() >0)
+                            res -= Double.parseDouble(String.valueOf(buf));
+                        else if (res != null && buf.length() == 0)
+                            res -= res;
+                        else res = 0.0;
+
+                        buf.delete(0, buf.length());
+                        showResult(String.valueOf(res));
+
                         logEvent("клавиша diff");
                         break;
 
                     case R.id.key_mult:
-                        if(a == 0.0) {
-                            a = Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                        } else {
-                            a *= Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                            showResult(String.valueOf(a));
-                        }
+                        operator = "*";
+                        if (res == null && buf.length() > 0)
+                            res = Double.valueOf(String.valueOf(buf));
+                        else if (res != null && buf.length() >0)
+                            res *= Double.parseDouble(String.valueOf(buf));
+                        else if (res != null && buf.length() == 0)
+                            res *= res;
+                        else res = 0.0;
+
+                        buf.delete(0, buf.length());
+                        showResult(String.valueOf(res));
+
                         logEvent("клавиша mult");
                         break;
 
                     case R.id.key_div:
-                        if(a == 0.0) {
-                            a = Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                        } else {
-                            a /= Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                            showResult(String.valueOf(a));
-                        }
+                        operator = "/";
+                        if (res == null && buf.length() > 0)
+                            res = Double.valueOf(String.valueOf(buf));
+                        else if (res != null && buf.length() >0)
+                            res /= Double.parseDouble(String.valueOf(buf));
+                        else if (res != null && buf.length() == 0 && res != 0.0)
+                            res /= res;
+                        else res = 0.0;
+
+                        buf.delete(0, buf.length());
+                        showResult(String.valueOf(res));
+
                         logEvent("клавиша div");
                         break;
 
-                    case R.id.key_perc:
-                       /* if(a == 0.0) {
-                            a = Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                        } else {
-                            a *= Double.valueOf(String.valueOf(buf));
-                            buf.delete(0, buf.length());
-                            showResult(String.valueOf(a));
-                        }
+                    case R.id.key_proc:
+                        operator = "%";
+                       if (res == null && buf.length() > 0)
+                            res = Double.valueOf(String.valueOf(buf));
 
-                        */
+                        buf.delete(0, buf.length());
+                        showResult(String.valueOf(res));
+
                         logEvent("клавиша perc");
                         break;
+
+                    case R.id.key_res:
+                        if(operator != null) {
+                            switch (operator) {
+                                case "+":
+                                    if (buf.length() > 0)
+                                        res += Double.parseDouble(String.valueOf(buf));
+                                    else
+                                        res += res;
+
+                                    buf.delete(0, buf.length());
+                                    showResult(String.valueOf(res));
+
+
+                                    break;
+
+                                case "-":
+                                    if (buf.length() > 0)
+                                        res -= Double.parseDouble(String.valueOf(buf));
+                                    else
+                                        res -= res;
+
+                                    buf.delete(0, buf.length());
+                                    showResult(String.valueOf(res));
+
+
+                                    break;
+
+                                case "*":
+                                    if (buf.length() > 0)
+                                        res *= Double.parseDouble(String.valueOf(buf));
+                                    else
+                                        res *= res;
+
+                                    buf.delete(0, buf.length());
+                                    showResult(String.valueOf(res));
+
+
+                                    break;
+
+                                case "/":
+                                    if (buf.length() > 0)
+                                        res /= Double.parseDouble(String.valueOf(buf));
+                                    else
+                                        res /= res;
+
+                                    buf.delete(0, buf.length());
+                                    showResult(String.valueOf(res));
+
+                                    break;
+
+                                case "%":
+                                    //if (buf.length() > 0)
+                                        res = (res * Double.parseDouble(String.valueOf(buf))) / 100;
+                                    //else
+                                      //  res = 0.0;
+
+                                    buf.delete(0, buf.length());
+                                    showResult(String.valueOf(res));
+
+                                    break;
+
+                            }
+                            logEvent("клавиша perc");
+                            break;
+                        }
 
                 }
             }
@@ -181,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.key_9).setOnClickListener(clickListener);
 
         findViewById(R.id.key_clear).setOnClickListener(clickListener);
+        findViewById(R.id.key_dot).setOnClickListener(clickListener);
 
         findViewById(R.id.key_sum).setOnClickListener(clickListener);
         findViewById(R.id.key_diff).setOnClickListener(clickListener);
@@ -188,11 +279,36 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.key_mult).setOnClickListener(clickListener);
         findViewById(R.id.key_div).setOnClickListener(clickListener);
 
+        findViewById(R.id.key_proc).setOnClickListener(clickListener);
+
+        findViewById(R.id.key_res).setOnClickListener(clickListener);
+
 
     }
 
-    private void showResult (String s) {
-        //result.setText(String.valueOf(res.doubleValue()));
+    // сохранение состояния
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("OPERATOR", operator);
+        if (res != null)
+            outState.putDouble("RESULT", res);
+       outState.putString("BUF", String.valueOf(buf));
+
+        super.onSaveInstanceState(outState);
+    }
+
+    // получение ранее сохраненного состояния
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        operator = savedInstanceState.getString("OPERATOR");
+        res = savedInstanceState.getDouble("RESULT");
+        buf.append(savedInstanceState.getString("BUF"));
+        showResult(String.valueOf(res));
+       // showResult(String.valueOf(buf));
+    }
+
+    private void showResult(String s) {
         screen.setText(s);
     }
 
