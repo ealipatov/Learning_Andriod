@@ -2,13 +2,13 @@ package by.ealipatov;
 
 public class CalculateOperatorKey {
 
-    public double resKey (String operator, Double res, StringBuilder buf) {
+    public double resKey(String operator, Double res, StringBuilder buf) {
 
         switch (operator) {
             case "+":
                 if (res == null && buf.length() > 0)
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() >0)
+                else if (res != null && buf.length() > 0)
                     res += Double.parseDouble(String.valueOf(buf));
                 else if (res != null && buf.length() == 0)
                     res = res;
@@ -19,7 +19,7 @@ public class CalculateOperatorKey {
             case "-":
                 if (res == null && buf.length() > 0)
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() >0)
+                else if (res != null && buf.length() > 0)
                     res -= Double.parseDouble(String.valueOf(buf));
                 else if (res != null && buf.length() == 0)
                     res = res;
@@ -30,7 +30,7 @@ public class CalculateOperatorKey {
             case "*":
                 if (res == null && buf.length() > 0)
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() >0)
+                else if (res != null && buf.length() > 0)
                     res *= Double.parseDouble(String.valueOf(buf));
                 else if (res != null && buf.length() == 0)
                     res = res;
@@ -41,7 +41,7 @@ public class CalculateOperatorKey {
             case "/":
                 if (res == null && buf.length() > 0)
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() >0)
+                else if (res != null && buf.length() > 0)
                     res /= Double.parseDouble(String.valueOf(buf));
                 else if (res != null && buf.length() == 0 && res != 0.0)
                     res = res;

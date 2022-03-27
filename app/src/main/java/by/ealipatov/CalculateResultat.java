@@ -2,7 +2,7 @@ package by.ealipatov;
 
 public class CalculateResultat {
 
-    public double res (String operator, Double res, StringBuilder buf) {
+    public double res(String operator, Double res, StringBuilder buf) {
 
         switch (operator) {
             case "+":
@@ -44,8 +44,6 @@ public class CalculateResultat {
 
         return res;
     }
-
-
 
 
 }

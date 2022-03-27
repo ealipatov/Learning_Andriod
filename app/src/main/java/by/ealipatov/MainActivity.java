@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         operator = "+";
 
                         res = calculateOperatorKey.resKey(operator, res, buf);
-                        showRes(String.valueOf(res) + " " + operator);
+                        showRes(res + " " + operator);
 
                         buf.delete(0, buf.length());
                         showBuf(String.valueOf(buf));
@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                         operator = "-";
 
                         res = calculateOperatorKey.resKey(operator, res, buf);
-                        showRes(String.valueOf(res) + " " + operator);
+                        showRes(res + " " + operator);
 
                         buf.delete(0, buf.length());
                         showBuf(String.valueOf(buf));
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                         operator = "*";
 
                         res = calculateOperatorKey.resKey(operator, res, buf);
-                        showRes(String.valueOf(res) + " " + operator);
+                        showRes(res + " " + operator);
 
                         buf.delete(0, buf.length());
                         showBuf(String.valueOf(buf));
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         operator = "/";
 
                         res = calculateOperatorKey.resKey(operator, res, buf);
-                        showRes(String.valueOf(res) + " " + operator);
+                        showRes(res + " " + operator);
 
                         buf.delete(0, buf.length());
                         showBuf(String.valueOf(buf));
@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                         operator = "%";
 
                         res = calculateOperatorKey.resKey(operator, res, buf);
-                        showRes(String.valueOf(res) + " " + operator);
+                        showRes(res + " " + operator);
 
                         buf.delete(0, buf.length());
                         showBuf(String.valueOf(buf));
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
 
 // Нажатие на кнопку равно
                     case R.id.key_res:
-                        if(operator != null) {
+                        if (operator != null) {
 
                             res = calculate.res(operator, res, buf);
                             showRes(String.valueOf(res));
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putString("OPERATOR", operator);
         if (res != null)
             outState.putDouble("RESULT", res);
-       outState.putString("BUF", String.valueOf(buf));
+        outState.putString("BUF", String.valueOf(buf));
 
         super.onSaveInstanceState(outState);
     }
@@ -237,12 +237,13 @@ public class MainActivity extends AppCompatActivity {
         res = savedInstanceState.getDouble("RESULT");
         buf.append(savedInstanceState.getString("BUF"));
         showBuf(String.valueOf(buf));
-        if(operator != null)
-        showRes(String.valueOf(res) + " " + operator);
+        if (operator != null)
+            showRes(res + " " + operator);
     }
 
     /**
      * выводим данные на экран из "буфера", то что в данный момент вводит пользователь
+     *
      * @param s
      */
     private void showBuf(String s) {
@@ -251,14 +252,18 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Выводим данные результата вычислений
+     *
      * @param s
      */
     private void showRes(String s) {
+        if (s == "null")
+            s = "";
         memory.setText(s);
     }
 
     /**
      * Логируем нажатие кнопок
+     *
      * @param event
      */
     private void logEvent(String event) {
