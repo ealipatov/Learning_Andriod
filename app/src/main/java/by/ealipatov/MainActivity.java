@@ -6,14 +6,12 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView screen;
+    TextView screen, memory;
     StringBuilder buf;
     Double res = null;
     String operator;
@@ -24,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         screen = findViewById(R.id.screen);
+        memory = findViewById(R.id.memory);
         buf = new StringBuilder();
+        CalculateResultat calculate = new CalculateResultat();
+        CalculateOperatorKey calculateOperatorKey = new CalculateOperatorKey();
 
-
-        // обработка нажатия на кнопки
+// обработка нажатия на числовые кнопки
         View.OnClickListener clickListener = new View.OnClickListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
@@ -36,223 +36,155 @@ public class MainActivity extends AppCompatActivity {
                 switch (view.getId()) {
                     case R.id.key_0:
                         buf.append(0);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 0");
                         break;
 
                     case R.id.key_1:
                         buf.append(1);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 1");
                         break;
 
                     case R.id.key_2:
                         buf.append(2);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 2");
                         break;
 
                     case R.id.key_3:
                         buf.append(3);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 3");
                         break;
 
                     case R.id.key_4:
                         buf.append(4);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 4");
                         break;
 
                     case R.id.key_5:
                         buf.append(5);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 5");
                         break;
 
                     case R.id.key_6:
                         buf.append(6);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 6");
                         break;
 
                     case R.id.key_7:
                         buf.append(7);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 7");
                         break;
 
                     case R.id.key_8:
                         buf.append(8);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 8");
                         break;
 
                     case R.id.key_9:
                         buf.append(9);
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша 9");
                         break;
-
+// Нажатие на кнопку точка
                     case R.id.key_dot:
 
                         if (!String.valueOf(buf).contains(".")) {
                             buf.append(".");
                         }
 
-                        showResult(String.valueOf(buf));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша dot");
                         break;
-
+// Нажатие на кнопку очистить
                     case R.id.key_clear:
                         if (buf.length() > 0)
                             buf.deleteCharAt(buf.length() - 1);
                         else res = null;
-                        showResult(String.valueOf(buf));
+                        showRes(String.valueOf(res));
+                        showBuf(String.valueOf(buf));
                         logEvent("клавиша del");
                         break;
-
+// Нажатие на кнопку сложение
                     case R.id.key_sum:
                         operator = "+";
-                        if (res == null && buf.length() > 0)
-                            res = Double.valueOf(String.valueOf(buf));
-                        else if (res != null && buf.length() >0) {
-                            showResult(res + "+");
-                            res += Double.parseDouble(String.valueOf(buf));
-                        }
-                        else if (res != null && buf.length() == 0)
-                            res += res;
-                        else res = 0.0;
+
+                        res = calculateOperatorKey.resKey(operator, res, buf);
+                        showRes(String.valueOf(res) + " " + operator);
 
                         buf.delete(0, buf.length());
-                        showResult(String.valueOf(res));
+                        showBuf(String.valueOf(buf));
 
                         logEvent("клавиша sum");
                         break;
-
+// Нажатие на кнопку минус
                     case R.id.key_diff:
                         operator = "-";
-                        if (res == null && buf.length() > 0)
-                            res = Double.valueOf(String.valueOf(buf));
-                        else if (res != null && buf.length() >0)
-                            res -= Double.parseDouble(String.valueOf(buf));
-                        else if (res != null && buf.length() == 0)
-                            res -= res;
-                        else res = 0.0;
+
+                        res = calculateOperatorKey.resKey(operator, res, buf);
+                        showRes(String.valueOf(res) + " " + operator);
 
                         buf.delete(0, buf.length());
-                        showResult(String.valueOf(res));
+                        showBuf(String.valueOf(buf));
 
                         logEvent("клавиша diff");
                         break;
-
+// Нажатие на кнопку умножение
                     case R.id.key_mult:
                         operator = "*";
-                        if (res == null && buf.length() > 0)
-                            res = Double.valueOf(String.valueOf(buf));
-                        else if (res != null && buf.length() >0)
-                            res *= Double.parseDouble(String.valueOf(buf));
-                        else if (res != null && buf.length() == 0)
-                            res *= res;
-                        else res = 0.0;
+
+                        res = calculateOperatorKey.resKey(operator, res, buf);
+                        showRes(String.valueOf(res) + " " + operator);
 
                         buf.delete(0, buf.length());
-                        showResult(String.valueOf(res));
+                        showBuf(String.valueOf(buf));
 
                         logEvent("клавиша mult");
                         break;
-
+// Нажатие на кнопку деление
                     case R.id.key_div:
                         operator = "/";
-                        if (res == null && buf.length() > 0)
-                            res = Double.valueOf(String.valueOf(buf));
-                        else if (res != null && buf.length() >0)
-                            res /= Double.parseDouble(String.valueOf(buf));
-                        else if (res != null && buf.length() == 0 && res != 0.0)
-                            res /= res;
-                        else res = 0.0;
+
+                        res = calculateOperatorKey.resKey(operator, res, buf);
+                        showRes(String.valueOf(res) + " " + operator);
 
                         buf.delete(0, buf.length());
-                        showResult(String.valueOf(res));
+                        showBuf(String.valueOf(buf));
 
                         logEvent("клавиша div");
                         break;
-
+// Нажатие на кнопку процент
                     case R.id.key_proc:
                         operator = "%";
-                       if (res == null && buf.length() > 0)
-                            res = Double.valueOf(String.valueOf(buf));
+
+                        res = calculateOperatorKey.resKey(operator, res, buf);
+                        showRes(String.valueOf(res) + " " + operator);
 
                         buf.delete(0, buf.length());
-                        showResult(String.valueOf(res));
+                        showBuf(String.valueOf(buf));
 
                         logEvent("клавиша perc");
                         break;
 
+// Нажатие на кнопку равно
                     case R.id.key_res:
                         if(operator != null) {
-                            switch (operator) {
-                                case "+":
-                                    if (buf.length() > 0)
-                                        res += Double.parseDouble(String.valueOf(buf));
-                                    else
-                                        res += res;
 
-                                    buf.delete(0, buf.length());
-                                    showResult(String.valueOf(res));
+                            res = calculate.res(operator, res, buf);
+                            showRes(String.valueOf(res));
+                            buf.delete(0, buf.length());
+                            showBuf(String.valueOf(buf));
+
+                            //operator = "=";
 
 
-                                    break;
-
-                                case "-":
-                                    if (buf.length() > 0)
-                                        res -= Double.parseDouble(String.valueOf(buf));
-                                    else
-                                        res -= res;
-
-                                    buf.delete(0, buf.length());
-                                    showResult(String.valueOf(res));
-
-
-                                    break;
-
-                                case "*":
-                                    if (buf.length() > 0)
-                                        res *= Double.parseDouble(String.valueOf(buf));
-                                    else
-                                        res *= res;
-
-                                    buf.delete(0, buf.length());
-                                    showResult(String.valueOf(res));
-
-
-                                    break;
-
-                                case "/":
-                                    if (buf.length() > 0)
-                                        res /= Double.parseDouble(String.valueOf(buf));
-                                    else
-                                        res /= res;
-
-                                    buf.delete(0, buf.length());
-                                    showResult(String.valueOf(res));
-
-                                    break;
-
-                                case "%":
-                                    //if (buf.length() > 0)
-                                        res = (res * Double.parseDouble(String.valueOf(buf))) / 100;
-                                    //else
-                                      //  res = 0.0;
-
-                                    buf.delete(0, buf.length());
-                                    showResult(String.valueOf(res));
-
-                                    break;
-
-                            }
-                            logEvent("клавиша perc");
-                            break;
                         }
 
                 }
@@ -304,14 +236,31 @@ public class MainActivity extends AppCompatActivity {
         operator = savedInstanceState.getString("OPERATOR");
         res = savedInstanceState.getDouble("RESULT");
         buf.append(savedInstanceState.getString("BUF"));
-        showResult(String.valueOf(res));
-       // showResult(String.valueOf(buf));
+        showBuf(String.valueOf(buf));
+        if(operator != null)
+        showRes(String.valueOf(res) + " " + operator);
     }
 
-    private void showResult(String s) {
+    /**
+     * выводим данные на экран из "буфера", то что в данный момент вводит пользователь
+     * @param s
+     */
+    private void showBuf(String s) {
         screen.setText(s);
     }
 
+    /**
+     * Выводим данные результата вычислений
+     * @param s
+     */
+    private void showRes(String s) {
+        memory.setText(s);
+    }
+
+    /**
+     * Логируем нажатие кнопок
+     * @param event
+     */
     private void logEvent(String event) {
         Log.d("CalcLog", event);
     }
