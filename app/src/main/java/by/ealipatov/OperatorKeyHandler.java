@@ -6,52 +6,66 @@ public class OperatorKeyHandler {
 
         switch (operator) {
             case "+":
-                if (res == null && buf.length() > 0)
+                if (res == null && buf.length() > 0){
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() > 0)
+
+                }
+                else if (res != null && buf.length() > 0){
                     res += Double.parseDouble(String.valueOf(buf));
-                else if (res != null && buf.length() == 0)
+                }
+                else if (res != null && buf.length() == 0){
                     res = res;
+                }
                 else res = null;
 
                 break;
 
             case "-":
-                if (res == null && buf.length() > 0)
+                if (res == null && buf.length() > 0){
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() > 0)
+                }
+                else if (res != null && buf.length() > 0){
                     res -= Double.parseDouble(String.valueOf(buf));
-                else if (res != null && buf.length() == 0)
+                }
+                else if (res != null && buf.length() == 0){
                     res = res;
+                }
                 else res = null;
 
                 break;
 
             case "*":
-                if (res == null && buf.length() > 0)
+                if (res == null && buf.length() > 0){
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() > 0)
+                }
+                else if (res != null && buf.length() > 0){
                     res *= Double.parseDouble(String.valueOf(buf));
-                else if (res != null && buf.length() == 0)
+                }
+                else if (res != null && buf.length() == 0){
                     res = res;
+                }
                 else res = null;
 
                 break;
 
             case "/":
-                if (res == null && buf.length() > 0)
+                if (res == null && buf.length() > 0){
                     res = Double.valueOf(String.valueOf(buf));
-                else if (res != null && buf.length() > 0)
+                }
+                else if (res != null && buf.length() > 0){
                     res /= Double.parseDouble(String.valueOf(buf));
-                else if (res != null && buf.length() == 0 && res != 0.0)
+                }
+                else if (res != null && buf.length() == 0 && res != 0.0){
                     res = res;
+                }
                 else res = null;
 
                 break;
 
             case "%":
-                if (res == null && buf.length() > 0)
+                if (res == null && buf.length() > 0){
                     res = Double.valueOf(String.valueOf(buf));
+                }
 
                 break;
 
