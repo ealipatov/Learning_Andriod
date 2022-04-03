@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         memory = findViewById(R.id.memory);
         buf = new StringBuilder();
         CalculateResultat calculate = new CalculateResultat();
-        CalculateOperatorKey calculateOperatorKey = new CalculateOperatorKey();
+        OperatorKeyHandler calculateOperatorKey = new OperatorKeyHandler();
 
 // обработка нажатия на числовые кнопки
         View.OnClickListener clickListener = new View.OnClickListener() {

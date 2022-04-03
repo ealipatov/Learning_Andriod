@@ -1,6 +1,6 @@
 package by.ealipatov;
 
-public class CalculateOperatorKey {
+public class OperatorKeyHandler {
 
     public double resKey(String operator, Double res, StringBuilder buf) {
 
