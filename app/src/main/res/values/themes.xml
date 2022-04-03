@@ -14,12 +14,10 @@
         <!-- Customize your theme here. -->
 
         <item name="materialButtonStyle">@style/CalcButton</item>
-        <item name="operatorButtonColor">@color/teal_200</item>
+        <item name="operatorButtonColor">#474747</item>
+        <item name="operatorButtonTextColor">#FFFFFF</item>
+
     </style>
 
-    <style name="Theme.MyApplication.V2">
-        <item name="materialButtonStyle">@style/CalcButton.V2</item>
-        <item name="operatorButtonColor">@android:color/holo_green_dark</item>
-    </style>
 
 </resources>
