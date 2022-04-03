@@ -11,10 +11,11 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
 
-    TextView screen, memory;
-    StringBuilder buf;
-    Double res = null;
-    String operator;
+    private TextView screen;
+    private TextView memory;
+    private StringBuilder buf;
+    private Double res = null;
+    private String operator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
