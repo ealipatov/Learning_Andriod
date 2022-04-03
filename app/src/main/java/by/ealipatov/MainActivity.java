@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String OPERATOR = "OPERATOR";
+    private static final String RESULT = "RESULT";
+    private static final String BUF = "BUF";
+
 
     private TextView screen;
     private TextView memory;
@@ -222,10 +226,10 @@ public class MainActivity extends AppCompatActivity {
     // сохранение состояния
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("OPERATOR", operator);
+        outState.putString(OPERATOR, operator);
         if (res != null)
-            outState.putDouble("RESULT", res);
-        outState.putString("BUF", String.valueOf(buf));
+            outState.putDouble(RESULT, res);
+        outState.putString(BUF, String.valueOf(buf));
 
         super.onSaveInstanceState(outState);
     }
@@ -234,9 +238,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        operator = savedInstanceState.getString("OPERATOR");
-        res = savedInstanceState.getDouble("RESULT");
-        buf.append(savedInstanceState.getString("BUF"));
+        operator = savedInstanceState.getString(OPERATOR);
+        res = savedInstanceState.getDouble(RESULT);
+        buf.append(savedInstanceState.getString(BUF));
         showBuf(String.valueOf(buf));
         if (operator != null)
             showRes(res + " " + operator);
