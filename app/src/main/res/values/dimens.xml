@@ -6,6 +6,4 @@
     <dimen name="layout_weight">1</dimen>
     <dimen name="textSize">40sp</dimen>
     <dimen name="textResSize">36sp</dimen>
-
-
 </resources>

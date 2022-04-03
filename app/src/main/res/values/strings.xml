@@ -11,8 +11,6 @@
     <string name="key_9">9</string>
     <string name="key_0">0</string>
     <string name="key_dot">.</string>
-
-
     <string name="key_sum">+</string>
     <string name="key_diff">-</string>
     <string name="key_div">/</string>
@@ -20,8 +18,4 @@
     <string name="key_res">=</string>
     <string name="key_proc">%</string>
     <string name="key_clear">C</string>
-
-
-
-
 </resources>

@@ -16,8 +16,5 @@
         <item name="materialButtonStyle">@style/CalcButton</item>
         <item name="operatorButtonColor">#474747</item>
         <item name="operatorButtonTextColor">#FFFFFF</item>
-
     </style>
-
-
 </resources>
