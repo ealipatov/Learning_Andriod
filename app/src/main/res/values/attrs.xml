@@ -2,4 +2,7 @@
 <resources>
     <attr name="operatorButtonColor" format="color" />
     <attr name="operatorButtonTextColor" format="color" />
+
+    <attr name="operatorButtonColorGreen" format="color" />
+    <attr name="operatorButtonTextColorGreen" format="color" />
 </resources>
