@@ -3,10 +3,15 @@ package by.ealipatov;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import by.ealipatov.storage.Theme;
+import by.ealipatov.storage.ThemeStorage;
+import by.ealipatov.ui.ThemeSelectionActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +30,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Theme savedTheme = ThemeStorage.getInstance(getApplicationContext()).getTheme();
+
+        setTheme(savedTheme.getTheme());
+
+
+        findViewById(R.id.theme_select).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ThemeSelectionActivity.class);
+                intent.putExtra(ThemeSelectionActivity.SELECTED_THEME, savedTheme);
+                startActivity(intent);
+            }
+        });
+
 
         screen = findViewById(R.id.screen);
         memory = findViewById(R.id.memory);

@@ -214,5 +214,12 @@
         app:layout_constraintRight_toRightOf="@id/key_diff"
         app:layout_constraintTop_toBottomOf="@id/screen" />
 
+        <com.google.android.material.button.MaterialButton
+        android:id="@+id/theme_select"
+        style="@style/CalcButton"
+        android:text="@string/theme_select"
+        app:layout_constraintTop_toBottomOf="@id/key_0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

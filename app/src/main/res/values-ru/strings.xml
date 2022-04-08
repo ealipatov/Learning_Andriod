@@ -19,4 +19,7 @@
     <string name="key_res">=</string>
     <string name="key_proc">%</string>
     <string name="key_clear">C</string>
+    <string name="theme_one">Один</string>
+    <string name="theme_two">Два</string>
+    <string name="theme_select">Выбор темы</string>
 </resources>
