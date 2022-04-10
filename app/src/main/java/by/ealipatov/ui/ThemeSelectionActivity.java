@@ -25,12 +25,12 @@ public class ThemeSelectionActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_theme_selection);
 
-        LinearLayout item_theme = findViewById(R.id.item_theme);
+        LinearLayout item_theme_layout = findViewById(R.id.item_theme_layout);
 
         Theme selectedTheme = (Theme) getIntent().getSerializableExtra(SELECTED_THEME);
 
         for (Theme theme: Theme.values()) {
-            View itemView = getLayoutInflater().inflate(R.layout.item_theme, item_theme, false);
+            View itemView = getLayoutInflater().inflate(R.layout.item_theme, item_theme_layout, false);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -56,7 +56,7 @@ public class ThemeSelectionActivity extends AppCompatActivity {
                 check.setVisibility(View.GONE);
             }
 
-            item_theme.addView(itemView);
+            item_theme_layout.addView(itemView);
         }
     }
 }

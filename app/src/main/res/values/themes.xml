@@ -17,6 +17,8 @@
         <item name="operatorButtonColor">#474747</item>
         <item name="operatorButtonTextColor">#FFFFFF</item>
 
+        <item name="android:textViewStyle">@style/TextViewStyle.Res</item>
+
     </style>
 
     <style name="Theme.MyApplication.Green" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
@@ -36,6 +38,8 @@
 
         <item name="operatorButtonColorGreen">#2C592E</item>
         <item name="operatorButtonTextColorGreen">#6AF16F</item>
+
+        <item name="android:textViewStyle">@style/TextViewStyle.Res.Green</item>
 
     </style>
 

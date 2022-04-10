@@ -18,8 +18,8 @@
     <string name="key_res">=</string>
     <string name="key_proc">%</string>
     <string name="key_clear">C</string>
-    <string name="theme_one">One</string>
-    <string name="theme_two">Two</string>
+    <string name="theme_one">Grey theme</string>
+    <string name="theme_two">Green theme</string>
     <string name="theme_select">Theme select</string>
 
 </resources>

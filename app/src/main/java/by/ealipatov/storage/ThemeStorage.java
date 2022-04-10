@@ -20,7 +20,7 @@ public class ThemeStorage {
     }
     private ThemeStorage(Context context){
         this.context = context;
-        sharedPreferences = context.getSharedPreferences("preferences", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("theme_select_btn", Context.MODE_PRIVATE);
     }
 
     public void saveTheme(Theme theme) {

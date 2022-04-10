@@ -1,13 +1,19 @@
 package by.ealipatov;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import by.ealipatov.storage.Theme;
 import by.ealipatov.storage.ThemeStorage;
@@ -18,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String OPERATOR = "OPERATOR";
     private static final String RESULT = "RESULT";
     private static final String BUF = "BUF";
-
+    private static final String MA = "MA";
 
     private TextView screen;
     private TextView memory;
@@ -29,27 +35,45 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        Theme savedTheme = ThemeStorage.getInstance(getApplicationContext()).getTheme();
+        ThemeStorage storage = ThemeStorage.getInstance(getApplicationContext());
 
-        setTheme(savedTheme.getTheme());
+        Theme savedTheme = storage.getTheme();
 
-
-        findViewById(R.id.theme_select).setOnClickListener(new View.OnClickListener() {
+        ActivityResultLauncher<Intent> launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ThemeSelectionActivity.class);
-                intent.putExtra(ThemeSelectionActivity.SELECTED_THEME, savedTheme);
-                startActivity(intent);
+            public void onActivityResult(ActivityResult result) {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+
+                    Theme chosenTheme = (Theme) data.getSerializableExtra(ThemeSelectionActivity.CHOSEN_THEME);
+
+                    storage.saveTheme(chosenTheme);
+
+                    recreate();
+                }
             }
         });
 
+        setTheme(savedTheme.getTheme());
+
+        setContentView(R.layout.activity_main);
 
         screen = findViewById(R.id.screen);
         memory = findViewById(R.id.memory);
         buf = new StringBuilder();
         OperatorKeyHandler calculateKeyHandler = new OperatorKeyHandler();
+
+        findViewById(R.id.theme_select_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ThemeSelectionActivity.class);
+                intent.putExtra(ThemeSelectionActivity.SELECTED_THEME, savedTheme);
+                launcher.launch(intent);
+            }
+        });
+
+        Toast.makeText(MainActivity.this, String.valueOf(savedTheme.getKey()), Toast.LENGTH_SHORT).show();
 
 // обработка нажатия на числовые кнопки
         View.OnClickListener clickListener = new View.OnClickListener() {
@@ -246,10 +270,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString(OPERATOR, operator);
-        if (result != 0.0)
+        if (result != 0.0) {
             outState.putDouble(RESULT, result);
+        }
         outState.putString(BUF, String.valueOf(buf));
-
         super.onSaveInstanceState(outState);
     }
 
@@ -261,8 +285,9 @@ public class MainActivity extends AppCompatActivity {
         result = savedInstanceState.getDouble(RESULT);
         buf.append(savedInstanceState.getString(BUF));
         showBuf(String.valueOf(buf));
-        if (operator != null)
+        if (operator != null){
             showRes(result + " " + operator);
+        }
     }
 
     /**
@@ -287,4 +312,5 @@ public class MainActivity extends AppCompatActivity {
     private void logEvent(String event) {
         Log.d("CalcLog", event);
     }
+
 }
