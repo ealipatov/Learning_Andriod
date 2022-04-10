@@ -12,5 +12,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="materialButtonStyle">@style/CalcButton</item>
+        <item name="operatorButtonColor">#636262</item>
+        <item name="operatorButtonTextColor">#EA3D06</item>
     </style>
 </resources>

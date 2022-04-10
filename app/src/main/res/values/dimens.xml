@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="btn_radius">24dp</dimen>
+    <dimen name="btn_text_size">24sp</dimen>
+    <dimen name="btn_operator_text_size">24sp</dimen>
+    <dimen name="layout_weight">1</dimen>
+    <dimen name="textSize">40sp</dimen>
+    <dimen name="textResSize">36sp</dimen>
+</resources>
